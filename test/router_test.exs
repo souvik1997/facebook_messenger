@@ -17,7 +17,7 @@ defmodule MockRouter do
   def message(msg) do
     text = FacebookMessenger.Response.message_texts(msg) |> hd
     sender = FacebookMessenger.Response.message_senders(msg) |> hd
-    FacebookMessenger.Sender.send(sender, text)
+    FacebookMessenger.Sender.send(sender, %{message: %{text: text}})
     send(self, 3)
   end
 

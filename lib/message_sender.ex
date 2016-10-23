@@ -27,10 +27,7 @@ defmodule FacebookMessenger.Sender do
     * :message - the message to send
   """
   def payload(recepient, message) do
-    %{
-      recipient: %{id: recepient},
-      message: %{text: message}
-    }
+    Map.merge(message, %{recipient: %{id: recepient}})
   end
 
   @doc """
